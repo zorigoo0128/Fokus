@@ -1,56 +1,76 @@
-# Xcode
-#
-# gitignore template for Xcode projects (macOS / iOS / watchOS / tvOS)
-
-# Build generated files
+# ==========================================
+# Xcode & Apple Developer
+# ==========================================
+# Build products & intermediates
 build/
 DerivedData/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
 *.hmap
-*.txt
+*.ipa
+*.dSYM.zip
+*.dSYM
 
-# User-specific Xcode configuration (keeps personal layout, breakpoints, and schemes local)
-*.xcuserdata/
+# Xcode User Data & State (keeps personal schemes, breakpoints, and window states local)
 xcuserdata/
+*.xcuserdata/
+*.xcuserstate
+*.xcbkptlist
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
 
-# Swift Package Manager build artifacts and dependencies
+# Swift Package Manager
 .build/
 .swiftpm/
+Packages/
+Package.pins
 
-# CocoaPods (uncomment if you store dependencies in Pods/ and manage via Podfile.lock)
-# Pods/
+# Playgrounds & Previews
+timeline.xctimeline
+playground.xcworkspace
 
-# Carthage (uncomment if using Carthage)
-# Carthage/Build/
+# ==========================================
+# macOS System Files
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
 
-# Fastlane
+# ==========================================
+# Temporary & Diagnostic Files
+# ==========================================
+*.log
+build_log.txt
+*.tmp
+*.bak
+*.swp
+*~
+
+# Crash logs
+*.crash
+
+# ==========================================
+# Code Signing & Secrets
+# ==========================================
+*.cer
+*.crt
+*.p12
+*.pfx
+*.pem
+*.mobileprovision
+*.provisionprofile
+
+# ==========================================
+# Fastlane & CI
+# ==========================================
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
-
-# macOS System Files
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-
-# Xcode project files that contain user state
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-
-# Code Signing & Certificates
-*.mobileprovision
-*.provisionprofile
-*.cer
-*.p12
-*.pks
-
-# Objective-C / Swift automatic documentation
-docs/
