@@ -1,0 +1,56 @@
+# Xcode
+#
+# gitignore template for Xcode projects (macOS / iOS / watchOS / tvOS)
+
+# Build generated files
+build/
+DerivedData/
+*.hmap
+*.txt
+
+# User-specific Xcode configuration (keeps personal layout, breakpoints, and schemes local)
+*.xcuserdata/
+xcuserdata/
+
+# Swift Package Manager build artifacts and dependencies
+.build/
+.swiftpm/
+
+# CocoaPods (uncomment if you store dependencies in Pods/ and manage via Podfile.lock)
+# Pods/
+
+# Carthage (uncomment if using Carthage)
+# Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Xcode project files that contain user state
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Code Signing & Certificates
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.p12
+*.pks
+
+# Objective-C / Swift automatic documentation
+docs/

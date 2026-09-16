@@ -1,0 +1,96 @@
+{
+  "source": "/Users/zorigoo/Documents/Fokus/Fokus/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Select Looped Video or Folder (⌘O)",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a video file (.mp4, .mov, etc.) or a folder of videos (⌘O)",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 127
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous video",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 144
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next video",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lldm",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 223
+        }
+      },
+      {
+        "comment": "",
+        "key": "Repeat: Enabled",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Repeat: Disabled",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pause (Space)",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 275
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start (Space)",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 275
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reset Timer",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 290
+        }
+      },
+      {
+        "comment": "",
+        "key": "Drop video file or folder here",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 314
+        }
+      }
+    ]
+  },
+  "version": 1
+}
