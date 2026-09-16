@@ -50,7 +50,7 @@ struct ContentView: View {
                             .foregroundColor(.white.opacity(0.85))
                             .padding(.horizontal, 14)
                             .padding(.vertical, 6)
-                            .glassCapsule()
+                            .glassEffect(.clear)
                         }
                         .buttonStyle(.plain)
                         .transition(.opacity.combined(with: .scale))
@@ -158,7 +158,7 @@ struct ContentView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
-        .glassCapsule()
+        .glassEffect(.clear)
     }
 
     // MARK: - Center Timer Display
@@ -166,26 +166,10 @@ struct ContentView: View {
         ZStack {
             // Glass backdrop card
             Circle()
-                .fill(.ultraThinMaterial)
+                .fill(Color.black.opacity(0.5))
                 .frame(width: 360, height: 360)
-                .overlay(
-                    Circle()
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [
-                                    Color.white.opacity(0.35),
-                                    Color.white.opacity(0.08),
-                                    Color.white.opacity(0.02),
-                                    Color.white.opacity(0.20)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                )
-                .shadow(color: Color.black.opacity(0.3), radius: 25, x: 0, y: 12)
-
+                .glassEffect(.clear)
+            
             // Circular Progress Ring
             CircularProgressView(progress: timer.progress, size: 320, lineWidth: 10)
 
@@ -251,11 +235,7 @@ struct ContentView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .frame(width: 44, height: 44)
             }
-            .buttonStyle(GlassButtonStyle(
-                isPrimary: false,
-                isAccent: timer.isRepeatEnabled,
-                shape: .circle
-            ))
+            .buttonStyle(GlassButtonStyle())
             .help(timer.isRepeatEnabled ? "Repeat: Enabled" : "Repeat: Disabled")
 
             // Play / Pause Button
@@ -266,11 +246,7 @@ struct ContentView: View {
                     .font(.system(size: 24, weight: .bold))
                     .frame(width: 68, height: 68)
             }
-            .buttonStyle(GlassButtonStyle(
-                isPrimary: true,
-                isAccent: false,
-                shape: .circle
-            ))
+            .buttonStyle(GlassButtonStyle())
             .keyboardShortcut(.space, modifiers: [])
             .help(timer.isRunning ? "Pause (Space)" : "Start (Space)")
 
@@ -282,16 +258,9 @@ struct ContentView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .frame(width: 44, height: 44)
             }
-            .buttonStyle(GlassButtonStyle(
-                isPrimary: false,
-                isAccent: false,
-                shape: .circle
-            ))
+            .buttonStyle(GlassButtonStyle())
             .help("Reset Timer")
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 10)
-        .glassCapsule()
     }
 
     // MARK: - Drop Indicator Overlay

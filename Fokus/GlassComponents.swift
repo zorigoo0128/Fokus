@@ -1,170 +1,19 @@
 import SwiftUI
 
-// MARK: - Glass View Modifiers
-
-struct GlassContainerModifier: ViewModifier {
-    var cornerRadius: CGFloat = 24
-    var opacity: Double = 0.25
-
-    func body(content: Content) -> some View {
-        content
-            .background {
-                ZStack {
-                    // Ultra-thin blur material
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(.ultraThinMaterial)
-
-                    // Subtle ambient tint
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-
-                    // Specular highlight border
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [
-                                    Color.white.opacity(0.35),
-                                    Color.white.opacity(0.12),
-                                    Color.white.opacity(0.03),
-                                    Color.white.opacity(0.18)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                }
-            }
-            .shadow(color: Color.black.opacity(0.35), radius: 20, x: 0, y: 10)
-    }
-}
-
-struct GlassCapsuleModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .background {
-                ZStack {
-                    Capsule(style: .continuous)
-                        .fill(.ultraThinMaterial)
-
-                    Capsule(style: .continuous)
-                        .fill(Color.white.opacity(0.05))
-
-                    Capsule(style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [
-                                    Color.white.opacity(0.38),
-                                    Color.white.opacity(0.10),
-                                    Color.white.opacity(0.02),
-                                    Color.white.opacity(0.20)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                }
-            }
-            .shadow(color: Color.black.opacity(0.25), radius: 12, x: 0, y: 6)
-    }
-}
-
-extension View {
-    func glassContainer(cornerRadius: CGFloat = 24) -> some View {
-        modifier(GlassContainerModifier(cornerRadius: cornerRadius))
-    }
-
-    func glassCapsule() -> some View {
-        modifier(GlassCapsuleModifier())
-    }
-}
 
 // MARK: - Glass Button Style
 struct GlassButtonStyle: ButtonStyle {
-    var isPrimary: Bool = false
-    var isAccent: Bool = false
-    var shape: GlassButtonShape = .circle
     @State private var isHovering = false
-
-    enum GlassButtonShape {
-        case circle
-        case capsule
-        case rounded(CGFloat)
-    }
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .background {
-                ZStack {
-                    if !isPrimary {
-                        baseMaterial
-                    }
-                    shapeBackground(isHovering: isHovering)
-                }
-            }
-            .foregroundColor(isPrimary ? .black : .white)
             .scaleEffect(configuration.isPressed ? 0.93 : (isHovering ? 1.04 : 1.0))
             .animation(.spring(response: 0.25, dampingFraction: 0.7), value: configuration.isPressed)
             .animation(.spring(response: 0.25, dampingFraction: 0.7), value: isHovering)
             .onHover { hovering in
                 isHovering = hovering
             }
-            .shadow(
-                color: isPrimary ? Color.white.opacity(0.3) : Color.black.opacity(0.3),
-                radius: isPrimary ? (isHovering ? 15 : 10) : (isHovering ? 8 : 4),
-                x: 0,
-                y: 4
-            )
-    }
-
-    @ViewBuilder
-    private var baseMaterial: some View {
-        switch shape {
-        case .circle:
-            Circle().fill(.ultraThinMaterial)
-        case .capsule:
-            Capsule(style: .continuous).fill(.ultraThinMaterial)
-        case .rounded(let radius):
-            RoundedRectangle(cornerRadius: radius, style: .continuous).fill(.ultraThinMaterial)
-        }
-    }
-
-    @ViewBuilder
-    private func shapeBackground(isHovering: Bool) -> some View {
-        let borderGradient = LinearGradient(
-            colors: [
-                Color.white.opacity(isPrimary ? 0.8 : (isHovering ? 0.5 : 0.3)),
-                Color.white.opacity(isPrimary ? 0.3 : (isHovering ? 0.2 : 0.08))
-            ],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-
-        let fillColor: Color = {
-            if isPrimary {
-                return Color.white.opacity(isHovering ? 0.95 : 0.88)
-            } else if isAccent {
-                return Color.accentColor.opacity(isHovering ? 0.40 : 0.28)
-            } else {
-                return Color.white.opacity(isHovering ? 0.14 : 0.06)
-            }
-        }()
-
-        switch shape {
-        case .circle:
-            Circle()
-                .fill(fillColor)
-                .overlay(Circle().strokeBorder(borderGradient, lineWidth: isPrimary ? 0 : 1))
-        case .capsule:
-            Capsule(style: .continuous)
-                .fill(fillColor)
-                .overlay(Capsule(style: .continuous).strokeBorder(borderGradient, lineWidth: isPrimary ? 0 : 1))
-        case .rounded(let radius):
-            RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(fillColor)
-                .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).strokeBorder(borderGradient, lineWidth: isPrimary ? 0 : 1))
-        }
+            .glassEffect(.clear)
     }
 }
 
@@ -267,7 +116,7 @@ struct GlassVolumeSlider: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
-        .glassCapsule()
+        .glassEffect(.clear)
         .onHover { hovering in
             withAnimation(.easeInOut(duration: 0.2)) {
                 isHovering = hovering
