@@ -6,33 +6,27 @@
     {
       "layers" : [
         {
-          "blend-mode" : "normal",
-          "glass" : false,
-          "image-name" : "Untitled - September 16, 2026 at 10.39.28.png",
-          "name" : "Untitled - September 16, 2026 at 10.39.28",
-          "opacity" : 1,
-          "position-specializations" : [
+          "blend-mode" : "darken",
+          "fill-specializations" : [
             {
-              "idiom" : "square",
-              "value" : {
-                "scale" : 1.62,
-                "translation-in-points" : [
-                  0,
-                  0
-                ]
-              }
-            },
+              "appearance" : "dark",
+              "value" : "automatic"
+            }
+          ],
+          "glass-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : true
+            }
+          ],
+          "hidden-specializations" : [
             {
               "idiom" : "macOS",
-              "value" : {
-                "scale" : 1.65,
-                "translation-in-points" : [
-                  0,
-                  0
-                ]
-              }
+              "value" : false
             }
-          ]
+          ],
+          "image-name" : "Gemini_Generated_Image_pwjrg8pwjrg8pwjr.jpeg",
+          "name" : "Gemini_Generated_Image_pwjrg8pwjrg8pwjr"
         }
       ],
       "shadow" : {

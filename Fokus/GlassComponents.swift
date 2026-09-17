@@ -13,7 +13,7 @@ struct GlassButtonStyle: ButtonStyle {
             .onHover { hovering in
                 isHovering = hovering
             }
-            .glassEffect(.clear)
+            .glassEffect(isHovering ? .regular : .clear)
     }
 }
 
@@ -116,7 +116,7 @@ struct GlassVolumeSlider: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
-        .glassEffect(.clear)
+        .glassEffect(isHovering ? .regular : .clear)
         .onHover { hovering in
             withAnimation(.easeInOut(duration: 0.2)) {
                 isHovering = hovering
