@@ -291,17 +291,8 @@ struct ContentView: View {
     private func handleDrop(providers: [NSItemProvider]) -> Bool {
         guard let provider = providers.first else { return false }
 
-        provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier, options: nil) { item, _ in
-            var resolvedURL: URL?
-            if let url = item as? URL {
-                resolvedURL = url
-            } else if let nsURL = item as? NSURL {
-                resolvedURL = nsURL as URL
-            } else if let data = item as? Data {
-                resolvedURL = URL(dataRepresentation: data, relativeTo: nil)
-            }
-
-            if let url = resolvedURL {
+        _ = provider.loadObject(ofClass: URL.self) { url, _ in
+            if let url = url {
                 DispatchQueue.main.async {
                     self.videoManager.loadURL(url)
                 }
